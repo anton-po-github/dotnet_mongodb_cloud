@@ -1,20 +1,37 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 
-namespace mongodb_dotnet_example
+var builder = WebApplication.CreateBuilder(args);
+
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-        }
+    var services = builder.Services;
+    var env = builder.Environment;
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
-    }
+    services.AddSwaggerGen();
+
+    services.AddControllers();
+
+    services.Configure<GamesDatabaseSettings>(builder.Configuration.GetSection(nameof(GamesDatabaseSettings)));
+
+    services.AddSingleton<IGamesDatabaseSettings>(sp => sp.GetRequiredService<IOptions<GamesDatabaseSettings>>().Value);
+
+    services.AddSingleton<GamesService>();
 }
+
+var app = builder.Build();
+
+{
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
+
+    app.UseCors(x => x
+        .AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader());
+
+    app.MapControllers();
+}
+
+app.Run();
