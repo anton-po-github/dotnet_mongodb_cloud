@@ -54,5 +54,4 @@ If you want more information about MongoDB and Atlas, the powerful cloud-based d
 
 Use at your own risk; not a supported MongoDB product 
 "# dotnet_mongodb" 
-"# dotnet_mongo_cloud_crud" 
-"# dotnet_mongo_cloud_crud" 
+"# dotnet_mongodb_cloud" 

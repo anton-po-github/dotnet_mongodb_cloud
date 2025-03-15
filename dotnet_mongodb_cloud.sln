@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet_mongo_cloud_crud", "dotnet_mongo_cloud_crud.csproj", "{647E6B76-A5E1-4512-AD1F-81714328BADC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet_mongodb_cloud", "dotnet_mongodb_cloud.csproj", "{647E6B76-A5E1-4512-AD1F-81714328BADC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
